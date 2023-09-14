@@ -5,7 +5,12 @@
     <title>DNA Analyzer</title>
 </head>
 <body>
-    <p>Hi there!</p>
-    <p>It works!</p>
+    {% for project in projects %}
+    <div>
+        <h2><a href="">{{ project.name }}</a></h2>
+        <p>{{ project.description }}</p>
+        <p>{{ project.author }}</p>
+    </div>
+    {% endfor %}
 </body>
 </html>
