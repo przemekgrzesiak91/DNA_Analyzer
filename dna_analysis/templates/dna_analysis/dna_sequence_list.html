@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DNA Analyzer</title>
+</head>
+<body>
+    {% for dna_sequence in dna_sequences %}
+    <div>
+        <h2><a href="">{{ dna_sequence.sequence }}</a></h2>
+        <p>{{ dna_sequence.description }}</p>
+        <p>{{ dna_sequence.project }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
