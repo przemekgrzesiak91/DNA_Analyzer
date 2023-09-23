@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+myvenv/
 
 # Spyder project settings
 .spyderproject
@@ -162,3 +163,4 @@ cython_debug/
 # My files
 Project TO DO.txt
 How to.txt
+/myvenv/
