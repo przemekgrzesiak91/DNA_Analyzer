@@ -24,3 +24,16 @@ def project_new(request):
     else:
         form = ProjectForm()
     return render(request, 'dna_analysis/project_edit.html', {'form': form})
+
+def project_edit(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    if request.method == "POST":
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.author = request.user
+            project.save()
+            return redirect('project_detail', pk=project.pk)
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'dna_analysis/project_edit.html', {'form': form})

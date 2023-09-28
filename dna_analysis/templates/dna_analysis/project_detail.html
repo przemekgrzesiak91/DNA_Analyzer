@@ -2,6 +2,7 @@
 
 {% block content %}
     <div class ="project">
+        <a class="btn btn-default" href="{% url 'project_edit' pk=project.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h2>{{ project.name }} </h2>
         <p> {{ project.description }} </p>
         <p>{{ project.author }}</p>
