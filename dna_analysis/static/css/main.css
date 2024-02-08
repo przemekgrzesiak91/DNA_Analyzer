@@ -1,7 +1,6 @@
-.{
-    background-color: #708090;
+body{
+    background-color: #495057;
 }
-
 
 .page-header {
     background-color: #DCDCDC;
@@ -9,6 +8,12 @@
     margin-bottom: 40px;
     padding: 10px 5px 5px 10px;
     border-bottom: 2px solid #4682B4;
+}
+
+.card {
+    background-color: #DCDCDC;
+    color: black;
+
 }
 
 .page-header h1,
@@ -75,25 +80,6 @@ h4 {
     background-color: #C25100;
 }
 
-.gradient-custom-2 {
-/* fallback for old browsers */
-background: #fccb90;
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-}
 
-@media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
-}
-}
-@media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
-}
-}
