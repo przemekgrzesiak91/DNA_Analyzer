@@ -4,8 +4,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views import generic
 from django.urls import reverse_lazy
 
-
-
 from .models import Project
 from .forms import ProjectForm
 

@@ -11,7 +11,7 @@
                     <img src="{% static 'img/dna.png' %}" alt="Logo">
                     <h4 class="mt-1 mb-5 pb-1">DNA Analyzer</h4>
                     <p>Please login to your account</p>
-                    <form method="post">
+                    <form method="post" class="login-form">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button class="btn btn-info btn-lg px-5" type="submit">Login</button>

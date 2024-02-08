@@ -8,4 +8,26 @@
         <h2>{{ project.name }} </h2>
         <p> {{ project.description }} </p>
         <p>{{ project.author }}</p>
+
+        <h3>Sekwencje</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Opis</th>
+      <th scope="col">Autor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for project in projects %}
+            <tr>
+                <td><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.author }}</td>
+            </tr>
+            {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}

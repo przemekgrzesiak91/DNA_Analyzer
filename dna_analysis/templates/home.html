@@ -4,8 +4,20 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+<div class="jumbotron">
+  <h1 class="display-4">Hello, {{ user.username }}!</h1>
+  <p class="lead">This is a simple dna analyzer</p>
+  <hr class="my-4">
+  <p> You can create project and analyze DNA sequences</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'project_list' %}" role="button">Projects list</a>
+  </p>
+</div>
+
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+
+
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
