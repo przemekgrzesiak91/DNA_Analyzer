@@ -10,7 +10,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-class DNASequence(models.Model):
+class DnaSequence(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     sequence = models.TextField()

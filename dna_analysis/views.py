@@ -4,12 +4,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views import generic
 from django.urls import reverse_lazy
 
-from .models import Project
-from .forms import ProjectForm
+from .models import Project, DnaSequence
+from .forms import ProjectForm,
 
 
 # Create your views here.
-
 def project_list(request):
     projects = Project.objects.all()
     return render(request, 'dna_analysis/project_list.html', {'projects': projects})

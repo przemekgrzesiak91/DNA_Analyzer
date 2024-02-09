@@ -14,11 +14,12 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-
     path('project_list', views.project_list, name='project_list'),
     path('project/<int:pk>/', views.project_detail, name='project_detail'),
     path('project/new/', views.project_new, name='project_new'),
     path('project/<int:pk>/edit/', views.project_edit, name='project_edit'),
-]
 
-# analogicznie utworzyć sekwencje DNA
+    path('dna_sequence/<int:pk>/', views.dna_sequence_detail, name='dna_sequence_detail'),
+    path('dna_sequence/new/', views.dna_sequence_new, name='dna_sequence_new'),
+    path('dna_sequence/<int:pk>/edit/', views.dna_sequence_edit, name='dna_sequence_edit'),
+]
