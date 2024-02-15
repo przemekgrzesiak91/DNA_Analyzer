@@ -25,6 +25,9 @@ SECRET_KEY = 'django-insecure-kmw=m4-$6#_z69(s@flejl6nqfk^s+0+t8a$jx_^&=)zhna6r6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
+
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 # Application definition

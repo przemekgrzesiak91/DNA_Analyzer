@@ -19,10 +19,21 @@
                 <td><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.author }}</td>
-                <td><a href="{% url 'project_edit' pk=project.pk %}"><i class="bi bi-pencil-square"></i></a></td>
+                <td><a href="{% url 'project_edit' pk=project.pk %}"><i class="bi bi-pencil-square"></i></a>
+                    <button onclick="deleteProject({{ project.pk }})">Usuń notatkę</button>
+                    <a href="{% url 'project_delete' pk=project.pk %}"><i class="bi bi-trash"></i></a></td>
             </tr>
             {% endfor %}
   </tbody>
 </table>
+
+{% if request.user == project.author %}
+    <!-- Pokaż przycisk usuwania tylko dla właściciela notatki -->
+    <form action="{% url 'project_delete' pk=project.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Usuń notatkę">
+    </form>
+{% endif %}
+
 {% endblock %}
 

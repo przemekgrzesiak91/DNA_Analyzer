@@ -3,6 +3,9 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views import generic
 from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 
 from .models import Project, DnaSequence
 from .forms import ProjectForm
@@ -41,6 +44,18 @@ def project_edit(request, pk):
     else:
         form = ProjectForm(instance=project)
     return render(request, 'dna_analysis/project_edit.html', {'form': form})
+
+@ensure_csrf_cookie
+def project_delete(request, pk):
+    project = get_object_or_404(Project,pk=pk)
+    if request.user == project.author:
+        try:
+            project.delete()
+            return JsonResponse({'status': 'success', 'message': 'Projekt został usunięty'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': 'Wystąpił błąd podczas usuwania projektu.'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Nie masz uprawnień do usunięcia tego projektu.'})
 
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
