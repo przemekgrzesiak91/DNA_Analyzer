@@ -19,7 +19,7 @@ urlpatterns = [
     path('project/new/', views.project_new, name='project_new'),
     path('project/<int:pk>/edit/', views.project_edit, name='project_edit'),
 
-    path('dna_sequence/<int:pk>/', views.dna_sequence_detail, name='dna_sequence_detail'),
-    path('dna_sequence/new/', views.dna_sequence_new, name='dna_sequence_new'),
-    path('dna_sequence/<int:pk>/edit/', views.dna_sequence_edit, name='dna_sequence_edit'),
+    # path('dna_sequence/<int:pk>/', views.dna_sequence_detail, name='dna_sequence_detail'),
+    # path('dna_sequence/new/', views.dna_sequence_new, name='dna_sequence_new'),
+    # path('dna_sequence/<int:pk>/edit/', views.dna_sequence_edit, name='dna_sequence_edit'),
 ]

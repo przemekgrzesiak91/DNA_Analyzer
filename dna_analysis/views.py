@@ -5,7 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 
 from .models import Project, DnaSequence
-from .forms import ProjectForm,
+from .forms import ProjectForm
 
 
 # Create your views here.
