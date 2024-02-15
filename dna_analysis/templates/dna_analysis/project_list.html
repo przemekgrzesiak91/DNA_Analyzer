@@ -8,15 +8,18 @@
       <th scope="col">Nazwa</th>
       <th scope="col">Opis</th>
       <th scope="col">Autor</th>
+      <th scope="col">Opcje</th>
+
     </tr>
   </thead>
   <tbody>
-  <a class="btn btn-primary btn-lg" href="/project/new" role="button">Add new project</a>
+  <a class="btn btn-primary btn-lg" href="/project/new" role="button"> <i class="bi bi-file-earmark-plus"></i> new project</a>
     {% for project in projects %}
             <tr>
                 <td><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.author }}</td>
+                <td><a href="{% url 'project_edit' pk=project.pk %}"><i class="bi bi-pencil-square"></i></a></td>
             </tr>
             {% endfor %}
   </tbody>
