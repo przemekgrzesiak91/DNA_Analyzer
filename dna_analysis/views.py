@@ -5,6 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.core.paginator import Paginator
 
 
 from .models import Project, DnaSequence
@@ -14,7 +15,12 @@ from .forms import ProjectForm
 # Create your views here.
 def project_list(request):
     projects = Project.objects.all()
-    return render(request, 'dna_analysis/project_list.html', {'projects': projects})
+    paginator = Paginator(projects,5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'dna_analysis/project_list.html', {'page_obj': page_obj})
 
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)

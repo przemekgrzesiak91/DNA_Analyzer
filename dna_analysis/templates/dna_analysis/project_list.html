@@ -14,26 +14,36 @@
   </thead>
   <tbody>
   <a class="btn btn-primary btn-lg" href="/project/new" role="button"> <i class="bi bi-file-earmark-plus"></i> new project</a>
-    {% for project in projects %}
+    {% for item in page_obj %}
             <tr>
-                <td><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.author }}</td>
-                <td><a href="{% url 'project_edit' pk=project.pk %}"><i class="bi bi-pencil-square"></i></a>
-                    <button onclick="deleteProject({{ project.pk }})">Usuń notatkę</button>
-                    <a href="{% url 'project_delete' pk=project.pk %}"><i class="bi bi-trash"></i></a></td>
+                <td><a href="{% url 'project_detail' pk=item.pk %}">{{ item.name }}</a></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.author }}</td>
+                <td><a href="{% url 'project_edit' pk=item.pk %}"><i class="bi bi-pencil-square"></i></a>
+                    <button onclick="deleteProject({{ item.pk }})">Usuń notatkę</button>
+                    <a href="{% url 'project_delete' pk=item.pk %}"><i class="bi bi-trash"></i></a></td>
             </tr>
             {% endfor %}
   </tbody>
 </table>
+<!-- Pagination links -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
 
-{% if request.user == project.author %}
-    <!-- Pokaż przycisk usuwania tylko dla właściciela notatki -->
-    <form action="{% url 'project_delete' pk=project.pk %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Usuń notatkę">
-    </form>
-{% endif %}
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}
 
