@@ -37,7 +37,7 @@ def project_new(request):
             project = form.save(commit=False)
             project.author = request.user
             project.save()
-            return redirect('project_detail', pk=project.pk)
+            return redirect('project_list')
     else:
         form = ProjectForm()
     return render(request, 'dna_analysis/project_edit.html', {'form': form})

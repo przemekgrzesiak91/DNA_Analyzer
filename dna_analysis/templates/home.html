@@ -6,18 +6,28 @@
 {% if user.is_authenticated %}
 
 <div class="jumbotron">
-  <h1 class="display-4">Hello, {{ user.username }}!</h1>
-  <p class="lead">This is a simple dna analyzer</p>
+  <h1 class="display-6">Hello, {{ user.username }}!</h1>
   <hr class="my-4">
-  <p> You can create project and analyze DNA sequences</p>
+  <p>A DNA sequence comparison application is a bioinformatics tool that allows for the analysis and comparison of nucleic acid sequences (DNA) to identify similarities and differences between them. Such applications are incredibly useful in biological research, medicine, genomics, and other fields where the analysis of DNA sequences plays a crucial role.</p>
+<p>Key features of such an application may include:</p>
+<ol>
+  <li><strong>Sequence Comparison:</strong> The application enables the comparison of DNA sequences from different sources, allowing for the identification of similarities and differences between them.</li>
+  <li><strong>Similarity Search:</strong> It enables searching for similarities between DNA sequences, aiding in the identification of related organisms or genes.</li>
+  <li><strong>Sequence Analysis:</strong> Provides tools for analyzing DNA sequences, such as motif searching, gene or coding region identification, and predicting protein functions and structures.</li>
+  <li><strong>Results Visualization:</strong> Offers visualization features for the results of sequence analysis in a clear manner, such as through charts, diagrams, or graphics.</li>
+  <li><strong>Interactive Tools:</strong> Provides interactive tools and user interfaces for manipulating, filtering, and exploring DNA sequence data.</li>
+  <li><strong>Advanced Analyses:</strong> Offers advanced analysis features, such as comparing sequences of multiple genes, evolutionary analysis, or detecting mutations and genetic variants.</li>
+</ol>
+<p>DNA sequence comparison applications are essential tools in biological and genetic research, enabling researchers to analyze complex genetic data and draw meaningful conclusions about evolution, biological functions, and diseases.</p>
+
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'project_list' %}" role="button">Projects list</a>
+    <a class="btn btn-primary" href="{% url 'project_list' %}" role="button">Projects list</a>
   </p>
 </div>
 
 <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
-    <button type="submit">logout</button>
+    <button type="submit" class="btn btn-primary">Log out</button>
 </form>
 
 {% else %}

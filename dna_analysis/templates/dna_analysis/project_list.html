@@ -2,6 +2,9 @@
 
 {% block content %}
 
+<a class="btn btn-primary" href="/project/new" role="button"> <i class="bi bi-file-earmark-plus"></i> new project</a>
+<p></p>
+
 <table class="table">
   <thead>
     <tr>
@@ -13,7 +16,6 @@
     </tr>
   </thead>
   <tbody>
-  <a class="btn btn-primary btn-lg" href="/project/new" role="button"> <i class="bi bi-file-earmark-plus"></i> new project</a>
     {% for item in page_obj %}
             <tr>
                 <td><a href="{% url 'project_detail' pk=item.pk %}">{{ item.name }}</a></td>
