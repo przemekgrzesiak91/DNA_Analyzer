@@ -9,4 +9,4 @@ class ProjectForm(forms.ModelForm):
 class DnaSequenceForm(forms.ModelForm):
     class Meta:
         model = DnaSequence
-        fields = ('project', 'name')
+        fields = ('name', 'sequence')
