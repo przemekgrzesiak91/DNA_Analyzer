@@ -12,9 +12,17 @@ class Project(models.Model):
 
 class DnaSequence(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    description = models.CharField(max_length=255)
+
+    name = models.CharField(max_length=100)
     sequence = models.TextField()
-    length = models.PositiveIntegerField()
+    length = models.PositiveIntegerField(blank=True, null=True)
+
+    def seq_length (self, *args, **kwargs):
+        self.length = len(self.sequence)
+        super().seq_length(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
 
     # stosunek G/C
     # typ sekwencji?

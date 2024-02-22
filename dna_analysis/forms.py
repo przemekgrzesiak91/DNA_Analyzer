@@ -6,7 +6,7 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = ('name', 'description')
 
-# class DnaSequenceForm(forms.ModelForm):
-#     class Meta:
-#         model = DnaSequence
-#         fields = ('project', 'description')
+class DnaSequenceForm(forms.ModelForm):
+    class Meta:
+        model = DnaSequence
+        fields = ('project', 'name')

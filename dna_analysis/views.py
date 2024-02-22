@@ -6,15 +6,16 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 from .models import Project, DnaSequence
-from .forms import ProjectForm
+from .forms import ProjectForm, DnaSequenceForm
 
 
 # Create your views here.
 def project_list(request):
-    projects = Project.objects.all()
+    projects = Project.objects.filter(author=request.user)
     paginator = Paginator(projects,5)
 
     page_number = request.GET.get('page')
@@ -23,8 +24,11 @@ def project_list(request):
     return render(request, 'dna_analysis/project_list.html', {'page_obj': page_obj})
 
 def project_detail(request, pk):
-    project = get_object_or_404(Project, pk=pk)
-    return render(request, 'dna_analysis/project_detail.html', {'project': project})
+    current_project = get_object_or_404(Project, pk=pk)
+    dna_sequences = DnaSequence.objects.filter(project=current_project)
+
+
+    return render(request, 'dna_analysis/project_detail.html', {'project': current_project, 'dna_sequences': dna_sequences})
 
 def project_new(request):
     if request.method == "POST":
