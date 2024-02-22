@@ -20,7 +20,6 @@
                 <td>{{ item.description }}</td>
                 <td>{{ item.author }}</td>
                 <td><a href="{% url 'project_edit' pk=item.pk %}"><i class="bi bi-pencil-square"></i></a>
-                    <button onclick="deleteProject({{ item.pk }})">Usuń notatkę</button>
                     <a href="{% url 'project_delete' pk=item.pk %}"><i class="bi bi-trash"></i></a></td>
             </tr>
             {% endfor %}

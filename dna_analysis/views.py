@@ -61,7 +61,8 @@ def project_delete(request, pk):
     if request.user == project.author:
         try:
             project.delete()
-            return JsonResponse({'status': 'success', 'message': 'Projekt został usunięty'})
+            return redirect('project_list')
+            #return JsonResponse({'status': 'success', 'message': 'Projekt został usunięty'})
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': 'Wystąpił błąd podczas usuwania projektu.'})
     else:
