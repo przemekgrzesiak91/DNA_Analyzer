@@ -19,13 +19,17 @@
     <tr>
       <th scope="col">Nazwa</th>
       <th scope="col">Autor</th>
+      <th scope="col">Opcje</th>
     </tr>
   </thead>
   <tbody>
     {% for dna_sequence in dna_sequences %}
             <tr>
-                <td><a href="{% url 'project_detail' pk=project.pk %}">{{ dna_sequence.name }}</a></td>
+                <td><a href="{% url 'dna_sequence_detail' pk=dna_sequence.pk %}">{{ dna_sequence.name }}</a></td>
                 <td>{{ project.author }}</td>
+                <td><a href="{% url 'dna_sequence_edit' pk=dna_sequence.pk %}"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'dna_sequence_delete' pk=dna_sequence.pk %}"><i class="bi bi-trash"></i></a>
+                </td>
             </tr>
             {% endfor %}
   </tbody>

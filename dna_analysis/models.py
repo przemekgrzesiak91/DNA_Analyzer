@@ -28,3 +28,5 @@ class DnaSequence(models.Model):
     # typ sekwencji?
     # w zasadzie czytanie jej czyli wklej sekwencej (FASTa/ itp) i rozloz ja na czesci i uzupełni pola.)?
 
+
+

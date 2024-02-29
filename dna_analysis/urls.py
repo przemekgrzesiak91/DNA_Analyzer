@@ -20,7 +20,8 @@ urlpatterns = [
     path('project/<int:pk>/edit/', views.project_edit, name='project_edit'),
     path('project/<int:pk>/delete/', views.project_delete, name='project_delete'),
 
-    # path('dna_sequence/<int:pk>/', views.dna_sequence_detail, name='dna_sequence_detail'),
+    path('dna_sequence/<int:pk>/', views.dna_sequence_detail, name='dna_sequence_detail'),
     path('dna_sequence/new/<int:pk>/', views.dna_sequence_new, name='dna_sequence_new'),
-    # path('dna_sequence/<int:pk>/edit/', views.dna_sequence_edit, name='dna_sequence_edit'),
+    path('dna_sequence/<int:pk>/edit/', views.dna_sequence_edit, name='dna_sequence_edit'),
+    path('dna_sequence/<int:pk>/delete/', views.dna_sequence_delete, name='dna_sequence_delete'),
 ]

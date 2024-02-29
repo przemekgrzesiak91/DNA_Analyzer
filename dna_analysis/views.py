@@ -27,7 +27,6 @@ def project_detail(request, pk):
     current_project = get_object_or_404(Project, pk=pk)
     dna_sequences = DnaSequence.objects.filter(project=current_project)
 
-
     return render(request, 'dna_analysis/project_detail.html', {'project': current_project, 'dna_sequences': dna_sequences})
 
 def project_new(request):
@@ -79,7 +78,38 @@ def dna_sequence_new(request, pk):
             return redirect('project_detail', pk=pk)
     else:
         form = DnaSequenceForm()
-    return render(request, 'dna_analysis/sequence_edit.html', {'form': form})
+    return render(request, 'dna_analysis/dna_sequence_edit.html', {'form': form})
+
+def dna_sequence_detail(request, pk):
+    current_sequence = get_object_or_404(DnaSequence, pk=pk)
+
+    return render(request, 'dna_analysis/dna_sequence_detail.html', {'sequence': current_sequence})
+
+def dna_sequence_edit(request, pk):
+    sequence = get_object_or_404(DnaSequence, pk=pk)
+    if request.method == "POST":
+        form = DnaSequenceForm(request.POST, instance=sequence)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.author = request.user
+            project.save()
+            return redirect('project_detail', pk=sequence.project.pk)
+    else:
+        form = DnaSequenceForm(instance=sequence)
+    return render(request, 'dna_analysis/project_edit.html', {'form': form})
+
+@ensure_csrf_cookie
+def dna_sequence_delete(request, pk):
+    pass
+    sequence = get_object_or_404(DnaSequence,pk=pk)
+    if request.user == sequence.project.author:
+        try:
+            sequence.delete()
+            return redirect('project_detail', pk=sequence.project.pk)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': 'Wystąpił błąd podczas usuwania projektu.'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Nie masz uprawnień do usunięcia tego projektu.'})
 
 
 
