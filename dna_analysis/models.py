@@ -28,5 +28,7 @@ class DnaSequence(models.Model):
     # typ sekwencji?
     # w zasadzie czytanie jej czyli wklej sekwencej (FASTa/ itp) i rozloz ja na czesci i uzupełni pola.)?
 
-
+class Analysis(models.Model):
+    sequence1 = models.ForeignKey(DnaSequence, related_name='analysis_sequence1', on_delete=models.CASCADE)
+    sequence2 = models.ForeignKey(DnaSequence, related_name='analysis_sequence2', on_delete=models.CASCADE)
 
