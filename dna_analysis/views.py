@@ -68,17 +68,18 @@ def project_delete(request, pk):
     else:
         return JsonResponse({'status': 'error', 'message': 'Nie masz uprawnień do usunięcia tego projektu.'})
 
-def dna_sequence_new(request):
+def dna_sequence_new(request, pk):
     if request.method == "POST":
         form = DnaSequenceForm(request.POST)
         if form.is_valid():
-            #sequence = form.save(commit=False)
-            #sequence.author = request.user
-            form.save()
-            return redirect('project_list')
+            sequence = form.save(commit=False)
+            sequence.project = get_object_or_404(Project,pk=pk)
+            sequence.save()
+
+            return redirect('project_detail', pk=pk)
     else:
         form = DnaSequenceForm()
-    return render(request, 'dna_analysis/project_list.html', {'form': form})
+    return render(request, 'dna_analysis/sequence_edit.html', {'form': form})
 
 
 
